@@ -1,0 +1,14 @@
+name: train_test
+
+on: [push]
+
+jobs: 
+  
+  build-dockerfile:
+    name: Build Dockerfile
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag HotDog:$(date +%s)
